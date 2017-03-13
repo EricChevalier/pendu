@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="js/angular.js"></script>
+	<script src="js/function.js"></script>
+	<script src="js/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7-dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Pendu</title>
+</head>
+<body>
+	<div ng-app="app">
+		<div class="content" ng-controller="myController">
+			<div ng-bind="test"></div>
+			<div ng-bind="noGeolocation">Pas de géolocalisation</div>
+			<div ng-hide="loggedIn">
+				<form class="form-inline">
+					<div class="form-group">
+				   		<label for="login">Identifiant :</label>
+				   		<input type="login" class="form-control" ng-model="login">
+					</div>
+					<div class="form-group">
+				   		<label for="password">Mot de passe :</label>
+				   		<input type="password" class="form-control" ng-model="password">
+					</div>
+					<button type="submit" class="btn btn-default" ng-click="log()">Se connecter</button>
+				</form>
+			</div>
+			<div class="login" ng-show="loggedIn">
+				Vous êtes connecté en tant que {{connectedUser}}.
+			</div>
+			<div ng-show="loggedIn">
+				<div class="left col-sm-4">
+					<img class="mapLeft" src="{{mapL}}">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="latitudeL">Latitude :</label>
+							<div class="col-sm-8">
+								<input id="latitudeL" ng-model="latitudeL">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="longitudeL">Longitude :</label>
+							<div class="col-sm-8">
+								<input id="longitudeL" ng-model="longitudeL">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-4 col-sm-8">
+								<input type="button" class="btn btn-primary" value="Afficher" ng-click="changeCoordLeft()">
+							</div>
+						</div>
+					</form>
+				</div>
+				
+				<div class="center col-sm-4">
+					<div ng-show="display">
+						<p>Distance en voiture entre les deux points : {{distanceCar}}, soit {{durationCar}} de trajet.</p>
+						<p>Distance à pieds entre les deux points : {{distanceWalk}}, soit {{durationWalk}} de trajet.</p>
+						<p>Distance en vélo entre les deux points : {{distanceBike}}, soit {{durationBike}} de trajet.</p>
+					</div>
+					<a class="btn btn-primary" href="historique.html">Voir l'historique</a>
+					<input type="button" class="btn btn-primary" value="Aide" ng-click="displayHelp()" ng-hide="displayVideo">
+					<input type="button" class="btn btn-primary" value="Cacher l'aide" ng-click="hideHelp()" ng-show="displayVideo">
+					<div ng-show="displayVideo">
+						<iframe width="420" height="315"
+							src="https://www.youtube.com/embed/6RZ9b-V6Bdc?controls=1">
+						</iframe> 
+					</div>
+				</div>
+
+				<div class="right col-sm-4">
+					<img class="mapRight" src="{{mapR}}">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="latitudeR">Latitude :</label>
+							<div class="col-sm-8">
+								<input id="latitudeR" ng-model="latitudeR">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="longitudeR">Longitude :</label>
+							<div class="col-sm-8">
+								<input id="longitudeR" ng-model="longitudeR">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-4 col-sm-8">
+								<input type="button" class="btn btn-primary" value="Afficher" ng-click="changeCoordRight()">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="bottom" ng-show="loggedIn">
+				<div class="col-sm-4">
+					<form class="form-inline">
+						<div class="form-group">
+					   		<label for="letter">Lettre :</label>
+					   		<input type="letter" class="form-control" maxlength="1" ng-model="letter">
+						</div>
+						<button type="submit" class="btn btn-primary" ng-click="tryLetter()">Valider</button>
+					</form>	
+				</div>
+				<div class="col-sm-4">
+					<div ng-bind="hangedWord"></div>
+				</div>
+				<div class="col-sm-4">
+					Nombres de tentatives : <span ng-bind="nbTries"></span><br/>
+					Lettres essayées : <span ng-repeat="letter in lettersTried track by $index">{{letter + " "}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

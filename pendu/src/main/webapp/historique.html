@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="js/angular.js"></script>
+	<script src="js/historique.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7-dist/css/bootstrap.css">
+	<title>Historique</title>
+</head>
+<body>
+	<div ng-app="app">
+		<div class="content" ng-controller="myController">
+			<div ng-show="display">
+				<table class="table table-striped">
+					<tr>
+						<th>Date</th>
+						<th>Latitude</th>
+						<th>Longitude</th>
+					</tr>
+					<tr ng-repeat="data in latlonTab track by $index">
+						<td>{{data.date}}</td>
+					  	<td>{{data.latitude}}</td>
+					  	<td>{{data.longitude}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

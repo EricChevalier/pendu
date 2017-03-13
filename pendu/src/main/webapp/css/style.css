@@ -1,0 +1,11 @@
+.login {
+	width: 750px;
+	margin: auto;
+	text-align: center;
+	color: green;
+}
+
+.mapLeft, .mapRight {
+	width: 500px;
+	height: 500px;
+}
