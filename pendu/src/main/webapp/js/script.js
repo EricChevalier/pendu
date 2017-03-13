@@ -37,24 +37,24 @@ app.controller('myController', function($scope, $http){
 	}
 
 	// récupération d'un mot aléatoire pour le jeu du pendu
-	$http.get("http://localhost:8080/pendu/rest/mots/get").then(function(response){
-			$scope.wordToGuess = response.data;
-			$scope.test = response.data;
+	// $http.get("http://localhost:8080/pendu/rest/mots/get").then(function(response){
+	// 		$scope.wordToGuess = response.data;
+	// 		$scope.test = response.data;
+	// 		// initialisation du mot à compléter
+	// 		$scope.hangedWord = "";
+	// 		for (var i = 0; i < response.data.length; i++) {
+	// 			$scope.hangedWord += "_ ";
+	// 		}
+			
+	// 	})
+
+			$scope.wordToGuess = "azer";
+			$scope.test = "azer";
 			// initialisation du mot à compléter
 			$scope.hangedWord = "";
-			for (var i = 0; i < response.data.length; i++) {
+			for (var i = 0; i < "azer".length; i++) {
 				$scope.hangedWord += "_ ";
 			}
-			
-		})
-
-			// $scope.wordToGuess = "azer";
-			// $scope.test = "azer";
-			// // initialisation du mot à compléter
-			// $scope.hangedWord = "";
-			// for (var i = 0; i < "azer".length; i++) {
-			// 	$scope.hangedWord += "_ ";
-			// }
 
 	// changer la carte de droite (autre joueur)
 	$scope.changeCoordRight = function(){
@@ -78,8 +78,8 @@ app.controller('myController', function($scope, $http){
 	$scope.log = function(){
 		var url = "http://localhost:8080/pendu/rest/login?login=" + $scope.login + "&password=" + $scope.password;
 
-		// $scope.loggedIn = true;
-		// $scope.connectedUser = "toto";
+		$scope.loggedIn = true;
+		$scope.connectedUser = "toto";
 
 		$http.get(url).then(function(response){
 			if(response.data == "ok"){
@@ -106,6 +106,7 @@ app.controller('myController', function($scope, $http){
 	// saisie d'une lettre pour le jeu du pendu
 	$scope.tryLetter = function(){
 		var hangedTab = [];
+
 		// Si la lettre n'a pas déjà été jouée
 		if(!$scope.lettersTried.includes($scope.letter) && $scope.victory == false){
 			$scope.nbTries ++;
@@ -143,24 +144,24 @@ app.controller('myController', function($scope, $http){
 		$scope.lettersTried = [];
 
 		// récupération d'un mot aléatoire pour le jeu du pendu
-		$http.get("http://localhost:8080/pendu/rest/mots/get").then(function(response){
-				$scope.wordToGuess = response.data;
-				$scope.test = response.data;
-				// initialisation du mot à compléter
-				$scope.hangedWord = "";
-				for (var i = 0; i < response.data.length; i++) {
-					$scope.hangedWord += "_ ";
-				}
+		// $http.get("http://localhost:8080/pendu/rest/mots/get").then(function(response){
+		// 		$scope.wordToGuess = response.data;
+		// 		$scope.test = response.data;
+		// 		// initialisation du mot à compléter
+		// 		$scope.hangedWord = "";
+		// 		for (var i = 0; i < response.data.length; i++) {
+		// 			$scope.hangedWord += "_ ";
+		// 		}
 				
-			})
+		// 	})
 
-		// $scope.wordToGuess = "try";
-		// $scope.test = "try";
-		// // initialisation du mot à compléter
-		// $scope.hangedWord = "";
-		// for (var i = 0; i < "try".length; i++) {
-		// 	$scope.hangedWord += "_ ";
-		// }
+		$scope.wordToGuess = "try";
+		$scope.test = "try";
+		// initialisation du mot à compléter
+		$scope.hangedWord = "";
+		for (var i = 0; i < "try".length; i++) {
+			$scope.hangedWord += "_ ";
+		}
 
 
 	}
