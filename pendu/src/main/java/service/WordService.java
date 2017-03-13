@@ -1,4 +1,4 @@
-package metier;
+package service;
 
 public interface WordService {
 	
