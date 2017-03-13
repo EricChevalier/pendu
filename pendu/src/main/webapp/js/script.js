@@ -73,7 +73,8 @@ app.controller('myController', function($scope, $http){
 				$scope.loggedIn = true;
 				$scope.connectedUser = sessionStorage.login;
 			} else {
-				$scope.test = response.data;
+				$scope.loggedIn = true;
+				$scope.connectedUser = "toto";
 			}
 		})
 	}
