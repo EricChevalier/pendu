@@ -8,6 +8,8 @@ app.controller('myController', function($scope, $http){
 	$scope.nbTries = 0;
 	$scope.lettersTried = [];
 	$scope.victory = false;
+	$scope.hangedMan = [];
+	$scope.cptHangedMan = 0;
 
 	$scope.connectedUser = sessionStorage.login;
 	if($scope.connectedUser){
@@ -83,6 +85,7 @@ app.controller('myController', function($scope, $http){
 			if(response.data == "ok"){
 				validateConnection($scope.login);
 				$scope.loggedIn = true;
+				sessionStorage.login = $scope.login;
 				$scope.connectedUser = sessionStorage.login;
 			} else {
 				$scope.loggedIn = true;
@@ -115,15 +118,20 @@ app.controller('myController', function($scope, $http){
 					// on place les lettres correspondantes dans le mot affiché
 					if($scope.wordToGuess[i] == $scope.letter){
 						hangedTab[i] = $scope.letter;
-					}
+					}	
 				}
 				// maj du mot affiché
 				$scope.hangedWord = tabToString(hangedTab);
+			} else {
+				$scope.hangedMan[$scope.cptHangedMan] = true;
+				$scope.cptHangedMan ++;
 			}
 			
 		}
 		if($scope.wordToGuess == tabToStringWithoutSpace(hangedTab)){
 			$scope.victory = true;
+		} else if($scope.cptHangedMan == 11){
+			$scope.defeat = true;
 		}		
 	}
 

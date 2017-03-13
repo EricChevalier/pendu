@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="js/angular.js"></script>
+	<script src="js/chat.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7-dist/css/bootstrap.css">
+	<title>Chat</title>
+</head>
+<body>
+	<div ng-app="app">
+		<div class="content" ng-controller="myController">
+			<div ng-bind="connectedUser"></div>
+			<div ng-show="loggedIn">vous êtes connecté</div>
+			<div ng-hide="loggedIn">vous n'êtes pas connecté</div>
+		</div>
+	</div>
+</body>
+</html>
