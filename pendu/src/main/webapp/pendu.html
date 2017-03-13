@@ -105,6 +105,10 @@
 				</div>
 				<div class="col-sm-4">
 					<div ng-bind="hangedWord"></div>
+					<div ng-show="victory" class="alert alert-success" role="alert">
+					<strong>Bravo !</strong> C'est la classe mec !
+					<button type="submit" class="btn btn-primary" ng-click="reset()">Tu y retournes ?</button>
+					</div>
 				</div>
 				<div class="col-sm-4">
 					Nombres de tentatives : <span ng-bind="nbTries"></span><br/>

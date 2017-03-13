@@ -50,3 +50,11 @@ var tabToString = function(tab){
 	}
 	return res;
 }
+
+var tabToStringSsEspace = function(tab){
+	var res = "";
+	for (var i = 0; i < tab.length; i++) {
+		res += tab[i];
+	}
+	return res;
+}
