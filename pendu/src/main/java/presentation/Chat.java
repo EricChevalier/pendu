@@ -39,7 +39,7 @@ public class Chat {
 
 	@GET
 	@Produces("text/json")
-	@Path("/newmessages")
+	@Path("/newmessage")
 	public Response addMessage(@QueryParam("room") String room, @QueryParam("author") String author,
 			@QueryParam("content") String content) {
 		service.addMessage(room, author, content);
